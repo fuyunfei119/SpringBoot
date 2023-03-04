@@ -1,0 +1,21 @@
+
+server:
+  port: 8081
+
+spring:
+  profiles:
+    active: dev
+
+name: "YunfeiFu"
+age: 23
+balance: 100.00
+birthday: 2012/12/12
+isSuperUser: false
+permissions: SuperUser,Vendor,B2B
+ordered_Items: "{'iphone 14 Plus': '999.00','Mac Book bro': '2799.00'}"
+
+orders:
+  orderNo: 10000,
+  itemName: Ipad Air
+  itemPrice: 4999.00
+  orderedDate: 2022/12/12
