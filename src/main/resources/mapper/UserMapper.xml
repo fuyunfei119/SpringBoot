@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.or//DTO Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.Reposity.UserReposity">
+    <select id="findAll" resultType="User">
+        select * from `User`
+    </select>
+
+    <select id="findByName" resultType="User">
+        select * from `User` where name = #{name}
+    </select>
+</mapper>

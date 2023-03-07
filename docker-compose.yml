@@ -1,0 +1,35 @@
+version: "3"
+services:
+  master:
+    build: .
+    container_name: mysql-master
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypassword
+      MYSQL_REPLICATION_MODE: master
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/master.cnf:/etc/mysql/conf.d/master.cnf
+    ports:
+      - "3306:3306"
+
+  slave:
+    build: .
+    container_name: mysql-slave
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypassword
+      MYSQL_REPLICATION_MODE: slave
+      MYSQL_MASTER_HOST: master
+      MYSQL_MASTER_PORT: 3306
+      MYSQL_REPLICATION_USER: repl
+      MYSQL_REPLICATION_PASSWORD: replpass
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/slave.cnf:/etc/mysql/conf.d/slave.cnf
+    ports:
+      - "3307:3306"

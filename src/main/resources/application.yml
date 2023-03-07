@@ -5,6 +5,30 @@ server:
 spring:
   profiles:
     active: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/?characterEncoding=UTF-8
+    username: root
+    password: root
+
+
+  sql:
+    init:
+      schema-locations: classpath:SQL/Init.sql
+      mode: always
+      platform: mysql
+
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml
+  type-aliases-package: com.example.demo.Entity
+
+logging:
+  level:
+    root: info
+    com.example.demo.Reposity: debug
+  file:
+    name: run.log
+    path: ./
 
 name: "YunfeiFu"
 age: 23
